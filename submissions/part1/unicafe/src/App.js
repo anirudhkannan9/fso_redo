@@ -1,7 +1,28 @@
 import React, { useState } from 'react'
 
 const Button = ({operation, text}) => <button onClick={operation}>{text}</button>
-const Statistic = ({text, value}) => <div>{text} {value}</div>
+const Statistic = ({text, value, pct}) => {
+  if (!pct) {
+    return (
+      <tbody>
+        <tr>  
+          <td>{text}</td> 
+          <td>{value}</td>
+        </tr>
+      </tbody>
+      )
+  }
+  return (
+    <tbody>
+        <tr>  
+          <td>{text}</td> 
+          <td>{value} %</td>
+        </tr>
+    </tbody>
+    
+  )
+  
+}
   
 const App = () => {
   // save clicks of each button to its own state
@@ -36,12 +57,14 @@ const App = () => {
       <Button operation={incrementBad} text="bad"/>
 
       <h1>statistics</h1>
-      <Statistic text="good" value={good}/>
-      <Statistic text="neutral" value={neutral}/>
-      <Statistic text="bad" value={bad}/>
-      <Statistic text="all" value={good+bad+neutral}/>
-      <Statistic text="average" value={(good - bad)/(good+bad+neutral)}/>
-      <Statistic text="positive (%)" value={(good/(good+neutral+bad))*100}/>
+      <table>
+        <Statistic text="good" value={good}/>
+        <Statistic text="neutral" value={neutral}/>
+        <Statistic text="bad" value={bad}/>
+        <Statistic text="all" value={good+bad+neutral}/>
+        <Statistic text="average" value={(good - bad)/(good+bad+neutral)}/>
+        <Statistic text="positive" value={(good/(good+neutral+bad))*100} pct={true}/>
+      </table>
 
     </div>
   )
