@@ -14,6 +14,21 @@ const App = () => {
   const incrementNeutral = () => setNeutral(neutral +1)
   const incrementBad = () => setBad(bad+1)
 
+  if (good === 0 && neutral === 0 && bad === 0) {
+    console.log(good === 0 && neutral === 0 && bad === 0)
+    return (
+      <div>
+        <h1>give feedback</h1>
+        <Button operation={incrementGood} text="good"/> 
+        <Button operation={incrementNeutral} text="neutral"/>
+        <Button operation={incrementBad} text="bad"/>
+
+        <h1>statistics</h1>
+        <p>No feedback given</p>
+      </div>
+    )
+  } 
+  console.log(good === 0 && neutral === 0 && bad === 0)
   return (
     <div>
       <h1>give feedback</h1>
@@ -31,6 +46,7 @@ const App = () => {
 
     </div>
   )
+  
 }
 
 export default App
