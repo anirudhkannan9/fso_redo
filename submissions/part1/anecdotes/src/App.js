@@ -15,19 +15,35 @@ const App = () => {
 
   const selectRandom = () => setSelected((Math.floor(Math.random() * (5 - 0 +1)) + 0))
   const vote = () => {
-    const copy = { ...points}
+    const copy = [ ...points]
     copy[selected] += 1
     setPoints(copy)
+
+    // const indexOfMaxValue = selected.indexOf(Math.max(...selected))
+    // console.log(indexOfMaxValue)
+    //has {points[points.indexOf(Math.max(...points))]} votes
+
+    //var max = Math.max(Object.entries(points))
+    //console.log(max)
+    // console.log('OG', points)
+    // console.log('spread', ...points)
+    // console.log('object.entries', Object.entries(points))
   }
+
 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       {anecdotes[selected]} 
       <br></br>
       has {points[selected]} votes
       <br></br>
       <button onClick={vote}> vote </button>
       <button onClick={selectRandom}> next anecdote </button>
+      <h1>Anecdote with most votes</h1>
+      {anecdotes[points.indexOf(Math.max(...points))]} 
+      <br></br>
+      has {points[points.indexOf(Math.max(...points))]} points
     </div>
   )
 }
