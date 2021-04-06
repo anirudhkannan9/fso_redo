@@ -18,16 +18,6 @@ const App = () => {
     const copy = [ ...points]
     copy[selected] += 1
     setPoints(copy)
-
-    // const indexOfMaxValue = selected.indexOf(Math.max(...selected))
-    // console.log(indexOfMaxValue)
-    //has {points[points.indexOf(Math.max(...points))]} votes
-
-    //var max = Math.max(Object.entries(points))
-    //console.log(max)
-    // console.log('OG', points)
-    // console.log('spread', ...points)
-    // console.log('object.entries', Object.entries(points))
   }
 
 
