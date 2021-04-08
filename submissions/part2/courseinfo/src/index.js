@@ -36,7 +36,7 @@ const App = () => {
       }
     ]
   }
-
+  
   return <Course course={course} />
 }
 
