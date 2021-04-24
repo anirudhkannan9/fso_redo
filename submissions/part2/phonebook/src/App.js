@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Filter from './components/Filter'
+import Person from './components/Person'
 import PersonForm from './components/PersonForm'
-import Persons from './components/Persons'
 import personService from './services/persons'
 
 const App = () => {
@@ -50,6 +50,18 @@ const App = () => {
     }
   }
 
+  const deletePerson = (person) => {
+    const id = person.id
+    console.log(id, ' needs to be deleted' )
+    if (window.confirm(`Delete ${person.name}?`)) {
+      personService
+        .deletePerson(id)
+        .then(response => 
+          setPersons(persons.filter(person => person.id !== id))
+        )
+    }
+  }
+
   const personsToShow = showAll
   ? persons
   : persons.filter(person => person.name.toLowerCase().includes(search.toLowerCase()))
@@ -71,8 +83,15 @@ const App = () => {
       />
 
       <h3>Numbers</h3>
+      {personsToShow.map((person, i) => 
+        <Person
+          key={i}
+          person={person}
+          deletePerson={() => deletePerson(person)}
+        />
 
-      <Persons personsToShow={personsToShow}/>
+      )}
+
     </div>
   )
 }
