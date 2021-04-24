@@ -2,7 +2,8 @@ This is a React app that fetches data from 2 different APIs (to do with countrie
 
 If there are too many countries that match the search string (especially common if the search is of only a couple letters), the user is prompted to narrow down their search criteria.
 
-<img src={./images/too_many.png}/>
+![alt text](https://github.com/anirudhkannan9/fso_redo/blob/main/submissions/part2/data4countries/images/too_many.png)
+
 
 If there are 10 or fewer countries matching the search string, each of the matching countries' name is listed, along with a button that allows the user to view more detailed information about that country (capital, population, flag, languages spoken, and current weather in the capital city). The user can also hide this information once it's shown.
 
