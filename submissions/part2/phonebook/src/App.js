@@ -35,9 +35,24 @@ const App = () => {
       name: newName,
       number: newNumber
     }
+
+    //check if person being added is already added
+      //if yes: clog something
+      //if no: normal request
+
+
     
-    if (persons.map(person => person.name).includes(newName)) {
-      window.alert(`${newName} is already added to phonebook`)
+    if (persons.map(person => person.name.toLowerCase()).includes(newName.toLowerCase())) {
+      if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)) {
+        const thisPerson = persons.filter(person => person.name.toLowerCase() === newName.toLowerCase())
+        const oldPersonObject = thisPerson[0]
+        const newPersonObject = { ...oldPersonObject, number: newNumber }
+        personService
+          .update(newPersonObject.id, newPersonObject)
+          .then(response => {
+            setPersons(persons.map(person => person.id === newPersonObject.id ? newPersonObject : person))
+          })
+      }      
     } else {
 
       personService
@@ -89,7 +104,6 @@ const App = () => {
           person={person}
           deletePerson={() => deletePerson(person)}
         />
-
       )}
 
     </div>
