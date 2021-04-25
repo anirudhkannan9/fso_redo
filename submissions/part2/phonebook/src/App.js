@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Filter from './components/Filter'
 import Person from './components/Person'
 import PersonForm from './components/PersonForm'
+import SuccessNotification from './components/SuccessNotification'
 import personService from './services/persons'
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
   const [ newNumber, setNewNumber ] = useState('')
   const [ search, setSearch ] = useState('')
   const [ showAll, setShowAll ] = useState(true)
+  const [ successMessage, setSuccessMessage ] = useState(null)
 
   useEffect(() => {
     personService
@@ -44,6 +46,10 @@ const App = () => {
         personService
           .update(newPersonObject.id, newPersonObject)
           .then(response => {
+            setSuccessMessage(`Updated ${newPersonObject.name}'s number`)
+            setTimeout(() => {
+              setSuccessMessage(null)
+            }, 5000)
             setPersons(persons.map(person => person.id === newPersonObject.id ? newPersonObject : person))
           })
       }      
@@ -52,6 +58,10 @@ const App = () => {
       personService
         .create(personObject)
         .then(response => {
+          setSuccessMessage(`Added ${personObject.name}`)
+          setTimeout(() => {
+            setSuccessMessage(null)
+          }, 5000)
           setPersons(persons.concat(personObject))
           setNewName('')
           setNewNumber('')
@@ -61,7 +71,6 @@ const App = () => {
 
   const deletePerson = (person) => {
     const id = person.id
-    console.log(id, ' needs to be deleted' )
     if (window.confirm(`Delete ${person.name}?`)) {
       personService
         .deletePerson(id)
@@ -78,7 +87,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-
+      <SuccessNotification message={successMessage} />
       <Filter search={search} handleSearchChange={handleSearchChange}/>
 
       <h3>Add a new</h3>
