@@ -48,11 +48,14 @@ const App = () => {
         personService
           .update(newPersonObject.id, newPersonObject)
           .then(response => {
+            setNewName('')
+            setNewNumber('')
             setSuccessMessage(`Updated ${newPersonObject.name}'s number`)
             setTimeout(() => {
               setSuccessMessage(null)
             }, 5000)
             setPersons(persons.map(person => person.id === newPersonObject.id ? newPersonObject : person))
+            
           })
           .catch(error => {
             setNewName('')

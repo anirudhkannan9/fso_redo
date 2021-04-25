@@ -1,3 +1,19 @@
+This is a React app representing a phonebook that includes a rudimentary backend server (with json-server) to store data. 
+
+Users can add new contacts to their phonebook, and are presented with a colourful message indicating success. 
+
+![Successfully added user message]
+
+Users can search (case-indifferent) for contacts in their phonebook, and the app will re-render to display only contacts with names that match the search string. 
+
+Users can also update the number of a contact that already exists, and are presented with a colourful message indicating success once the operation is completed. 
+
+Lastly, edge cases where the user opens the app and interacts with it in separate windows are handled. If a user deletes a contact in one window, and then attempts to change the number of the recently-deleted contact in another window, they are presented with a styled error message indicating that the contact has already been removed from their phonebook.
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
