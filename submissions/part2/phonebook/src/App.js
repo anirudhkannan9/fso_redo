@@ -3,6 +3,7 @@ import Filter from './components/Filter'
 import Person from './components/Person'
 import PersonForm from './components/PersonForm'
 import SuccessNotification from './components/SuccessNotification'
+import ErrorNotification from './components/ErrorNotification'
 import personService from './services/persons'
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
   const [ search, setSearch ] = useState('')
   const [ showAll, setShowAll ] = useState(true)
   const [ successMessage, setSuccessMessage ] = useState(null)
+  const [ errorMessage, setErrorMessage ] = useState(null)
 
   useEffect(() => {
     personService
@@ -38,9 +40,9 @@ const App = () => {
       number: newNumber
     }
 
-    if (persons.map(person => person.name.toLowerCase()).includes(newName.toLowerCase())) {
+    if (persons.map(person => person.name.toLowerCase().trim()).includes(newName.toLowerCase().trim())) {
       if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)) {
-        const thisPerson = persons.filter(person => person.name.toLowerCase() === newName.toLowerCase())
+        const thisPerson = persons.filter(person => person.name.toLowerCase().trim() === newName.toLowerCase().trim())
         const oldPersonObject = thisPerson[0]
         const newPersonObject = { ...oldPersonObject, number: newNumber }
         personService
@@ -52,19 +54,33 @@ const App = () => {
             }, 5000)
             setPersons(persons.map(person => person.id === newPersonObject.id ? newPersonObject : person))
           })
+          .catch(error => {
+            setNewName('')
+            setNewNumber('')
+            personService
+              .getAll()
+              .then(response => {
+                setPersons(response)
+              })
+            setErrorMessage(`${newPersonObject.name} has already been removed from server`)
+            setTimeout(() => {
+              setErrorMessage(null)
+            }, 5000)
+          })
       }      
     } else {
 
       personService
         .create(personObject)
         .then(response => {
+          setPersons(persons.concat(personObject))
+          setNewName('')
+          setNewNumber('')
           setSuccessMessage(`Added ${personObject.name}`)
           setTimeout(() => {
             setSuccessMessage(null)
           }, 5000)
-          setPersons(persons.concat(personObject))
-          setNewName('')
-          setNewNumber('')
+          
         })
     }
   }
@@ -88,6 +104,7 @@ const App = () => {
     <div>
       <h2>Phonebook</h2>
       <SuccessNotification message={successMessage} />
+      <ErrorNotification message={errorMessage} />
       <Filter search={search} handleSearchChange={handleSearchChange}/>
 
       <h3>Add a new</h3>
