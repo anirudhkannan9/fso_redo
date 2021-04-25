@@ -36,12 +36,6 @@ const App = () => {
       number: newNumber
     }
 
-    //check if person being added is already added
-      //if yes: clog something
-      //if no: normal request
-
-
-    
     if (persons.map(person => person.name.toLowerCase()).includes(newName.toLowerCase())) {
       if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)) {
         const thisPerson = persons.filter(person => person.name.toLowerCase() === newName.toLowerCase())
