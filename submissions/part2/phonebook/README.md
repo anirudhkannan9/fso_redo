@@ -18,7 +18,7 @@ Users can also update the number of a contact that already exists (they're asked
 
 Lastly, edge cases where the user opens the app and interacts with it in separate windows are handled. If a user deletes a contact in one window, and then attempts to change the number of the recently-deleted contact in another window, they are presented with a styled error message indicating that the contact has already been removed from their phonebook.
 
-![Update error](https://github.com/anirudhkannan9/fso_redo/blob/main/submissions/part2/phonebook/screenshots/update_error.png)
+![Update error](https://github.com/anirudhkannan9/fso_redo/blob/main/submissions/part2/phonebook/screenshots/update_error.pngt)
 
 
 
