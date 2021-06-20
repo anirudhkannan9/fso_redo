@@ -23,7 +23,14 @@ If there is only 1 country whose name matches the search string, the full inform
 ![Full information on a country, including weather in its capital city](https://github.com/anirudhkannan9/fso_redo/blob/main/submissions/part2/data4countries/images/full_info.png)
 
 
-# Getting Started with Create React App
+
+
+
+
+
+
+
+# Boilerplate - Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
