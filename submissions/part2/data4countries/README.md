@@ -1,17 +1,23 @@
+# Data4Countries: a React app using the Weatherstack API
+
 This is a React app that fetches data from 2 different APIs (to do with countries and weather in their capitals), and conditionally renders information regarding the countries and weather in their capital. The conditional rendering is responsive to a search string, inputted by the user. 
 
+## Demo
+
+### Searching - many countries matching search string
 If there are too many countries that match the search string (especially common if the search is of only a couple letters), the user is prompted to narrow down their search criteria.
 
 ![Search results when there are too many matching country names](https://github.com/anirudhkannan9/fso_redo/blob/main/submissions/part2/data4countries/images/too_many.png)
 
 
+### Searching - 10 or fewer countries matching search string
 If there are 10 or fewer countries matching the search string, each of the matching countries' name is listed, along with a button that allows the user to view more detailed information about that country (capital, population, flag, languages spoken, and current weather in the capital city). The user can also hide this information once it's shown.
 
 ![Search results when there are ten or fewer country names matching the search string](https://github.com/anirudhkannan9/fso_redo/blob/main/submissions/part2/data4countries/images/ten_or_less.png)
 
 ![Show/hide full info functionality](https://github.com/anirudhkannan9/fso_redo/blob/main/submissions/part2/data4countries/images/show_hide.png)
 
-
+### Searching - 1 country matching search string
 If there is only 1 country whose name matches the search string, the full information (as above) is displayed. 
 
 ![Full information on a country, including weather in its capital city](https://github.com/anirudhkannan9/fso_redo/blob/main/submissions/part2/data4countries/images/full_info.png)
