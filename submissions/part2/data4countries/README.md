@@ -1,6 +1,16 @@
 # Data4Countries: a React app using the Weatherstack API
 
-This is a React app that fetches data from 2 different APIs (to do with countries and weather in their capitals), and conditionally renders information regarding the countries and weather in their capital. The conditional rendering is responsive to a search string, inputted by the user. 
+This is a React app that fetches data from 2 different APIs (to do with countries and weather in their capitals), and conditionally renders information regarding the countries and weather in their capital. The conditional rendering is responsive to a search string, inputted by the user.
+
+## Running the app
+
+After downloading the repository, navigate to the directory that contains this project and run 
+### `npm install`
+to install the project's dependencies. 
+
+Still in the directory containing this project: 
+### `npm start`
+starts the application at [http://localhost:3000](http://localhost:3000/)
 
 ## Demo
 
