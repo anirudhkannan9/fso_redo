@@ -8,6 +8,8 @@ After downloading the repository, navigate to the directory that contains this p
 ### `npm install`
 to install the project's dependencies. 
 
+You will need the .env file with my API key in order to make calls to the weatherstack API. Email me (anirudhkannan9[AT]gmail[DOT]com) to use mine, or simply request your own at https://weatherstack.com/ and add it to a .env file that you create locally (you get 1,000 free calls a month, iirc). 
+
 Still in the directory containing this project: 
 ### `npm start`
 starts the application at [http://localhost:3000](http://localhost:3000/)
